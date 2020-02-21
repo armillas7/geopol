@@ -15,6 +15,8 @@ $(document).ready(function () {
 
         map.on('load', function () {
             addCountries();
+            addCoups();
+            map.setFilter('coups', ['==', 'year', year.toString()]);
 
             function addCountries() {
                 map.addSource("countries-source", {
@@ -60,6 +62,35 @@ $(document).ready(function () {
                     }
                 });
             }
+
+            function addCoups() {
+                map.addSource("coups-source", {
+                    type: "vector",
+                    url: "mapbox://armillas7.5fisnjge"
+                });
+
+                map.addLayer({
+                    id: "coups",
+                    type: "circle",
+                    source: "coups-source",
+                    'source-layer': "coups-bnaxdt",
+                    'paint': {
+                        'circle-color': [
+                            "match",
+                            ['get', 'success'],
+                            '1',
+                            '#FAFAFA',
+                            '2',
+                            '#F87103',
+                            '3',
+                            '#9D740E',
+                            '4',
+                            '#024927',
+                            '#CCC'
+                        ]
+                    }
+                });
+            }
         });
     }
 
@@ -71,36 +102,49 @@ $(document).ready(function () {
             step: 1,
             slide: function (event, ui) {
                 year = ui.value;
-                $(".info-year-txt").text(year);
-                map.setPaintProperty('countries', 'fill-color', {
-                    property: 'qd_' + year,
-                    type: 'interval',
-                    stops: [
-                        [-15, '#FAFAFA'],
-                        [-10, '#FF1010'],
-                        [-9, '#FE1D0E'],
-                        [-8, '#FD2B0C'],
-                        [-7, '#FC390A'],
-                        [-6, '#FB4708'],
-                        [-5, '#FA5507'],
-                        [-4, '#F96305'],
-                        [-3, '#F87103'],
-                        [-2, '#F77F01'],
-                        [-1, '#F78D00'],
-                        [0, '#E08603'],
-                        [1, '#CA8007'],
-                        [2, '#B47A0A'],
-                        [3, '#9D740E'],
-                        [4, '#876E11'],
-                        [5, '#716715'],
-                        [6, '#5B6118'],
-                        [7, '#445B1C'],
-                        [8, '#2E551F'],
-                        [9, '#184F23'],
-                        [10, '#024927']
-                    ]
-                });
+                updateCoups();
+                updateCountries();
+                updateSliderTxt();
             }
+        });
+    }
+
+    function updateSliderTxt() {
+        $(".info-year-txt").text(year);
+    }
+
+    function updateCoups() {
+        map.setFilter('coups', ['==', 'year', year.toString()]);
+    }
+
+    function updateCountries() {
+        map.setPaintProperty('countries', 'fill-color', {
+            property: 'qd_' + year,
+            type: 'interval',
+            stops: [
+                [-15, '#FAFAFA'],
+                [-10, '#FF1010'],
+                [-9, '#FE1D0E'],
+                [-8, '#FD2B0C'],
+                [-7, '#FC390A'],
+                [-6, '#FB4708'],
+                [-5, '#FA5507'],
+                [-4, '#F96305'],
+                [-3, '#F87103'],
+                [-2, '#F77F01'],
+                [-1, '#F78D00'],
+                [0, '#E08603'],
+                [1, '#CA8007'],
+                [2, '#B47A0A'],
+                [3, '#9D740E'],
+                [4, '#876E11'],
+                [5, '#716715'],
+                [6, '#5B6118'],
+                [7, '#445B1C'],
+                [8, '#2E551F'],
+                [9, '#184F23'],
+                [10, '#024927']
+            ]
         });
     }
 });

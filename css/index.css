@@ -16,6 +16,8 @@ body {
     top: 30;
     width: 70%;
     margin: 0 auto;
+    background-color: #2f2f2f;
+    border: none;
 }
 
 .info-year {
@@ -30,4 +32,14 @@ body {
     border-radius: 4px;
     background-color: #2f2f2f;
     color: #eee;
+}
+
+.ui-slider-handle {
+    border-radius: 14px;
+    background: #2972d1!important;
+    border:none!important;
+}
+
+.ui-slider-handle.ui-state-active {
+    background: #2d93e7!important;
 }
