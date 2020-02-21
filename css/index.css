@@ -13,12 +13,21 @@ body {
 
 #slider {
     left: 30;
-    top: 20;
-    height: 750px;
+    top: 30;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .info-year {
     position: relative;
-    left: 20;
-    top: 0;
+    left: -80;
+    top: -4;
+}
+
+.info-year-txt {
+    padding: 6px 8px;
+    font-size: 18px;
+    border-radius: 4px;
+    background-color: #2f2f2f;
+    color: #eee;
 }
