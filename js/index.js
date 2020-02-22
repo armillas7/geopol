@@ -1,9 +1,14 @@
+/*
+    David Armillas Camins
+    Febrer del 2020
+    Màster SIG
+*/
+
 $(document).ready(function () {
 
     var map;
     var popup;
     var year;
-
     year = 1948;
 
     addMap();
@@ -93,19 +98,7 @@ $(document).ready(function () {
                             4,
                             4
                         ],
-                        'circle-color': [
-                            "match",
-                            ['get', 'success'],
-                            '1',
-                            '#2f2f2f',
-                            '2',
-                            '#2f2f2f',
-                            '3',
-                            '#2f2f2f',
-                            '4',
-                            '#2f2f2f',
-                            '#2f2f2f'
-                        ]
+                        'circle-color': '#2f2f2f'
                     }
                 });
             }
@@ -270,4 +263,8 @@ $(document).ready(function () {
             ]
         });
     }
+
+    $(".drop-btn").click(function() {
+        $(".drop-info-container").toggle();
+    });
 });

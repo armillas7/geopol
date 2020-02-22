@@ -1,3 +1,9 @@
+/*
+    David Armillas Camins
+    Febrer del 2020
+    Màster SIG
+*/
+
 body {
     margin: 0;
     padding: 0;
@@ -11,6 +17,7 @@ body {
     height: 100%
 }
 
+/* Estils de l'slider */
 #slider {
     left: 30;
     top: 30;
@@ -18,6 +25,7 @@ body {
     margin: 0 auto;
     background-color: #2f2f2f;
     border: none;
+    height: 10px;
 }
 
 .info-year {
@@ -36,12 +44,8 @@ body {
 
 .ui-slider-handle {
     border-radius: 14px;
-    background: #5182a4!important;
-    border:none!important;
-}
-
-.ui-slider-handle.ui-state-active {
     background: #3386c0!important;
+    border:none!important;
 }
 
 /* Estils del popup */
@@ -113,4 +117,120 @@ body {
 .detail .participants {
     display: block;
     margin-top: -5px;
+}
+
+/* Estils del dropdown */
+.drop-info {
+    position: fixed;
+    left: 30;
+    top: 4;
+}
+
+.drop-btn:hover {
+    cursor: pointer;
+}
+
+.drop-info-container {
+    width: 160px;
+}
+
+.democracy-info, .coups-info {
+    background-color: white;
+    padding: 8px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 3px solid #2f2f2f;
+}
+
+.democracy-info a, .coups-info a {
+    display: block;
+    margin-top: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.democracy-info a:hover, .coups-info a:hover {
+    color: gray;
+}
+
+.democracy-info .legend, .coups-info .legend {
+    margin-top: 8px;
+}
+
+.democracy-info .legend {
+    margin-left: 11px;
+}
+
+.democracy-info .title, .coups-info .title {
+    font-size: 14px;
+}
+
+.democracy-info .dot {
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    margin-left: 2px;
+    margin-right: 4px;
+    margin-bottom: -2px;
+}
+
+.democracy-info .dot.lower {
+    background-color: #FF101066;
+}
+
+.democracy-info .dot.medium {
+    background-color: #E0860366;
+}
+
+.democracy-info .dot.higher {
+    background-color: #02492766;
+}
+
+.democracy-info .det, .coups-info .det {
+    margin-top: 4px;
+}
+
+.democracy-info .det .txt {
+    display: inline-block;
+    font-size: 14px;
+}
+
+.democracy-info .det .txt.medium {
+    margin-left: 12px;
+}
+
+.democracy-info .det .txt.higher {
+    margin-left: 5px;
+}
+
+.coups-info .dot-container {
+    display: inline-block;
+    width: 36px;
+}
+
+.coups-info .dot {
+    display: block;
+    background-color: #2f2f2f;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.coups-info .dot.lower {
+    height: 6px;
+    width: 6px;
+}
+
+.coups-info .dot.medium {
+    height: 10px;
+    width: 10px;
+}
+
+.coups-info .dot.higher {
+    height: 14px;
+    width: 14px;
+}
+
+.coups-info .dot.bigger {
+    height: 18px;
+    width: 18px;
 }

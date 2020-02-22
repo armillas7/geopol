@@ -1,7 +1,13 @@
+<!--
+    David Armillas Camins
+    Febrer del 2020
+    Màster SIG
+-->
+
 <html lang="es">
 
     <head>
-        <title>Geopolitica</title>
+        <title>Geopol</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
@@ -16,11 +22,67 @@
 
     <body>
         <div id="map"> </div>
+        
         <div id="slider">
             <div class="info-year">
                 <span class="info-year-txt">1948</span>
             </div>
         </div>
-    </body>
 
+        <div class="drop-info">
+            <p class="drop-btn">
+                <img src="img/menu.png" height="40" alt="dropdown" />
+            </p>
+            <div class="drop-info-container" style="display:none;">
+                <div class="democracy-info">
+                    <span class="title">Qualitat Democràtica</span>
+                    <div class="legend">
+                        <div class="det">
+                            <span class="dot lower"></span>
+                            <span class="txt lower">-10</span>
+                        </div>
+                        <div class="det">
+                            <span class="dot medium"></span>
+                            <span class="txt medium">0</span>
+                        </div>
+                        <div class="det">
+                            <span class="dot higher"></span>
+                            <span class="txt higher">10</span>
+                        </div>
+                    </div>
+                    <a href="http://www.systemicpeace.org/inscr/p4manualv2018.pdf" target="_blank">documentació</a> 
+                </div>
+                <div class="coups-info">
+                    <span class="title">Cops d'Estat</span>
+                    <div class="legend">
+                        <div class="det">
+                            <div class="dot-container">
+                                <span class="dot lower"></span>
+                            </div>
+                            <span class="txt lower">Complots</span>
+                        </div>
+                        <div class="det">
+                            <div class="dot-container">
+                                <span class="dot medium"></span>
+                            </div>
+                            <span class="txt medium">Cop planejat</span>
+                        </div>
+                        <div class="det">
+                            <div class="dot-container">
+                                <span class="dot higher"></span>
+                            </div>
+                            <span class="txt higher">Intent fallit</span>
+                        </div>
+                        <div class="det">
+                            <div class="dot-container">
+                                <span class="dot bigger"></span>
+                            </div>
+                            <span class="txt bigger">Cop exitós</span>
+                        </div>
+                    </div>
+                    <a href="http://www.systemicpeace.org/inscr/CSPCoupsCodebook2018.pdf" target="_blank">documentació</a> 
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
