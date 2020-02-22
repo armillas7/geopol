@@ -1,7 +1,10 @@
 $(document).ready(function () {
 
-    var year = 1948;
     var map;
+    var popup;
+    var year;
+
+    year = 1948;
 
     addMap();
     addSlider();
@@ -10,7 +13,9 @@ $(document).ready(function () {
         mapboxgl.accessToken = 'pk.eyJ1IjoiYXJtaWxsYXM3IiwiYSI6ImNrNDh0YTJrbzE1bXIzc3BqMGk2cjh0MW4ifQ.BsJudZIqIKLsc0k1YCPMFg';
         map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/armillas7/ck6uy65zq028g1iqlloktwhac'
+            style: 'mapbox://styles/armillas7/ck6uy65zq028g1iqlloktwhac',
+            center: [9.667969, 19],
+            zoom: 1.8
         });
 
         map.on('load', function () {
@@ -75,23 +80,141 @@ $(document).ready(function () {
                     source: "coups-source",
                     'source-layer': "coups-bnaxdt",
                     'paint': {
+                        'circle-radius': [
+                            "match",
+                            ['get', 'success'],
+                            '1',
+                            10,
+                            '2',
+                            8,
+                            '3',
+                            6,
+                            '4',
+                            4,
+                            4
+                        ],
                         'circle-color': [
                             "match",
                             ['get', 'success'],
                             '1',
-                            '#FAFAFA',
+                            '#2f2f2f',
                             '2',
-                            '#F87103',
+                            '#2f2f2f',
                             '3',
-                            '#9D740E',
+                            '#2f2f2f',
                             '4',
-                            '#024927',
-                            '#CCC'
+                            '#2f2f2f',
+                            '#2f2f2f'
                         ]
                     }
                 });
             }
         });
+    }
+
+    map.on('mouseenter', 'coups', function (e) {
+        addPopup(e);
+    });
+
+    map.on('mouseleave', 'coups', function (e) {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+
+    function addPopup(e) {
+        var c_year = e.features[0].properties["year"];
+        var c_month = e.features[0].properties["mth"];
+        var c_day = e.features[0].properties["day"];
+        var c_success = e.features[0].properties["success"];
+        var c_leader = e.features[0].properties["leader"];
+        var c_deaths = e.features[0].properties["deaths"];
+        var c_name = e.features[0].properties["NAME"];
+
+        var popupTxt = '';
+
+        popupTxt +=
+            '<div class="popup">' +
+                '<div class="popup-icon">' +
+                    '<p><img src="img/'+ getCoupImg(c_success) +'" alt="Cop" height="42" width="42"><p>' +
+                '</div>' +
+                '<div class="popup-txt">' +
+                    '<div class="popup-title">' +
+                        '<span class="pt-date">' + getPopupDate(c_day, c_month, c_year) + '</span>' +
+                    '</div>' +
+                    '<div class="details">' +
+                        '<div class="detail">' +
+                            '<span class="title">País </span>' +
+                            '<span class="detail-txt">' + c_name + '</span>' +
+                        '</div>' +
+                        '<div class="detail">' +
+                            '<span class="title">Resultat </span>' +
+                            '<span class="detail-txt">' + getPopupCoupResult(c_success) + '</span>' +
+                        '</div>' +
+                        '<div class="detail">' +
+                            '<span class="title">Impulsors </span>' +
+                            '<span class="detail-txt participants">' + getPopupParticipants(c_leader) + '</span>' +
+                        '</div>' +
+                        '<div class="detail">' +
+                            '<span class="title">Morts </span>' +
+                            '<span class="detail-txt">' + getPopupDeaths(c_deaths) + '</span>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>'
+
+        popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+        });
+
+        popup
+            .setLngLat(e.lngLat)
+            .setHTML(popupTxt)
+            .addTo(map);
+    }
+
+    function getCoupImg(success) {
+        switch(success) {
+            case '1': return 'tank.png';
+            case '2': return 'attack.png';
+            case '3': return 'soldiers.png';
+            case '4': return 'complot.png';
+            default: return 'complot.png';
+        }
+    }
+
+    function getPopupDate(d, m, y) {
+        year_txt = '';
+        if (d.length > 0) { 
+            if (d.length == 1) { year_txt += '0'}
+            year_txt += (d + '-') 
+        }
+        if (m.length > 0) { 
+            if (m.length == 1) { year_txt += '0'}
+            year_txt += (m + '-') 
+        }
+        if (y.length > 0) { year_txt += y }
+        return year_txt;
+    }
+
+    function getPopupCoupResult(success) {
+        switch(success) {
+            case '1': return 'Cop exitós';
+            case '2': return 'Intent fallit';
+            case '3': return 'Cop planejat';
+            case '4': return 'Complot';
+            default: return 'Sense especificar';
+        }
+    }
+
+    function getPopupParticipants(parts) {
+        var parts_txt = parts.replace(';', ',');
+        return parts_txt.substr(0,1).toUpperCase()+parts_txt.substr(1);
+    }
+
+    function getPopupDeaths(deaths) {
+        if (deaths == '999') { return 'Sense dades' }
+        return deaths;
     }
 
     function addSlider() {

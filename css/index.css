@@ -36,10 +36,81 @@ body {
 
 .ui-slider-handle {
     border-radius: 14px;
-    background: #2972d1!important;
+    background: #5182a4!important;
     border:none!important;
 }
 
 .ui-slider-handle.ui-state-active {
-    background: #2d93e7!important;
+    background: #3386c0!important;
+}
+
+/* Estils del popup */
+.popup {
+    display: block;
+    padding: 12px 8px;
+}
+
+.mapboxgl-popup-content {
+    background-color: #2f2f2f;
+    border-radius: 6px;
+    width: 270px;
+}
+
+.mapboxgl-popup-tip {
+    border-top-color: #2f2f2f!important;
+}
+
+.popup .popup-icon {
+    float: left;
+    width: 50px;
+    margin-bottom: -10px;
+}
+
+.popup .popup-icon p {
+    margin-top: -8px;
+}
+
+.popup-icon img {
+    border-radius: 50%;
+    background-color: #9d9d9d;
+}
+
+.popup .popup-txt {
+    float: left;
+    width: 200px;
+}
+
+.popup-title {
+    margin-left: 8px;
+    margin-bottom: 12px;
+}
+
+.popup-title .pt-date {
+    font-size: 16px;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #a0a0a0;
+}
+
+.popup .title {
+    font-weight: bold;
+}
+
+.popup .details {
+    margin-top: 6px;
+    margin-left: 8px;
+    padding: 4px 7px;
+    background-color: #1c1c1c;
+    border-radius: 6px;
+    color: #a0a0a0;
+}
+
+.popup .details .detail {
+    text-transform: capitalize;
+    margin-bottom: 0px;
+}
+
+.detail .participants {
+    display: block;
+    margin-top: -5px;
 }
