@@ -40,6 +40,7 @@ body {
     background-color: #2f2f2f;
     border: none;
 }
+
 #slider.horizontal {
     left: 180;
     top: 30;
@@ -49,7 +50,7 @@ body {
 
 #slider.vertical {
     left: 20;
-    top: 55;
+    top: 35;
     height: 85%;
     width: 10px;
 }
@@ -63,13 +64,21 @@ body {
 #slider.vertical .info-year {
     position: relative;
     left: 0;
-    top: -40;
+    top: -25;
 }
 
-.info-year-txt {
+#slider.horizontal .info-year-txt {
     padding: 6px 8px;
     font-size: 18px;
     border-radius: 4px;
+    background-color: #2f2f2f;
+    color: #eee;
+}
+
+#slider.vertical .info-year-txt {
+    padding: 2px 4px;
+    font-size: 14px;
+    border-radius: 3px;
     background-color: #2f2f2f;
     color: #eee;
 }
@@ -351,10 +360,37 @@ body {
     }
 
     .popup-title {
-        margin-left: 60px;
+        margin-left: 70px;
     }
 
     .ui-slider-handle {
         top: auto;
     }
+
+    .popup {
+        display: block;
+        padding: 6px 8px;
+    }
+
+    .mapboxgl-popup-content {
+        background-color: #2f2f2fd9;
+        border-radius: 6px;
+        width: 203px;
+    }
+
+    .popup .popup-icon {
+        position: absolute;
+        top: 14;
+        left: 30;
+        width: 50px;
+        margin-bottom: -10px;
+    }
+
+    .popup .popup-txt {
+        float: left;
+        margin-left: -10px;
+        margin-top: 5px;
+        width: 200px;
+    }
+    
 }
