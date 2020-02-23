@@ -49,7 +49,7 @@ body {
 
 #slider.vertical {
     left: 20;
-    top: 40;
+    top: 55;
     height: 85%;
     width: 10px;
 }
@@ -63,7 +63,7 @@ body {
 #slider.vertical .info-year {
     position: relative;
     left: 0;
-    top: -30;
+    top: -40;
 }
 
 .info-year-txt {
