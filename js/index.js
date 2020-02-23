@@ -209,10 +209,38 @@ $(document).ready(function () {
         if (deaths == '999') { return 'Sense dades' }
         return deaths;
     }
-
+    
     function addSlider() {
+        if($(window).width() < 767) {
+            addVerticalSlider();
+            $("#slider").addClass("vertical");
+        }
+
+        if($(window).width() >= 767) {
+            addHorizontalSlider();
+            $("#slider").addClass("horizontal");
+        }
+    }
+
+    function addHorizontalSlider() {
         $("#slider").slider({
             value: 1948,
+            min: 1948,
+            max: 2018,
+            step: 1,
+            slide: function (event, ui) {
+                year = ui.value;
+                updateCoups();
+                updateCountries();
+                updateSliderTxt();
+            }
+        });
+    }
+
+    function addVerticalSlider() {
+        $("#slider").slider({
+            value: 1948,
+            orientation: 'vertical',
             min: 1948,
             max: 2018,
             step: 1,
@@ -266,43 +294,6 @@ $(document).ready(function () {
 
     $(".drop-btn").click(function() {
         $(".drop-info-container").toggle();
-    });
-
-    $(window).on("resize", function(event){
-        console.log("AA");
-        if($(window).width() < 767) {
-            console.log("BB");
-            $("#slider").slider({
-                value: 1948,
-                orientation: 'vertical',
-                min: 1948,
-                max: 2018,
-                step: 1,
-                slide: function (event, ui) {
-                    year = ui.value;
-                    updateCoups();
-                    updateCountries();
-                    updateSliderTxt();
-                }
-            });
-            $("#slider").addClass("vertical");
-        }
-
-        if($(window).width() >= 767) {
-            $("#slider").slider({
-                value: 1948,
-                min: 1948,
-                max: 2018,
-                step: 1,
-                slide: function (event, ui) {
-                    year = ui.value;
-                    updateCoups();
-                    updateCountries();
-                    updateSliderTxt();
-                }
-            });
-            $("#slider").removeClass("vertical");
-        }
     });
 });
 
