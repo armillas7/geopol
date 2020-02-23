@@ -136,11 +136,11 @@ $(document).ready(function () {
                     '</div>' +
                     '<div class="details">' +
                         '<div class="detail">' +
-                            '<span class="title">País </span>' +
+                            '<span class="title">País: </span>' +
                             '<span class="detail-txt">' + c_name + '</span>' +
                         '</div>' +
                         '<div class="detail">' +
-                            '<span class="title">Resultat </span>' +
+                            '<span class="title">Resultat: </span>' +
                             '<span class="detail-txt">' + getPopupCoupResult(c_success) + '</span>' +
                         '</div>' +
                         '<div class="detail">' +
@@ -148,7 +148,7 @@ $(document).ready(function () {
                             '<span class="detail-txt participants">' + getPopupParticipants(c_leader) + '</span>' +
                         '</div>' +
                         '<div class="detail">' +
-                            '<span class="title">Morts </span>' +
+                            '<span class="title">Morts: </span>' +
                             '<span class="detail-txt">' + getPopupDeaths(c_deaths) + '</span>' +
                         '</div>' +
                     '</div>' +
@@ -267,4 +267,45 @@ $(document).ready(function () {
     $(".drop-btn").click(function() {
         $(".drop-info-container").toggle();
     });
+
+    $(window).on("resize", function(event){
+        console.log("AA");
+        if($(window).width() < 767) {
+            console.log("BB");
+            $("#slider").slider({
+                value: 1948,
+                orientation: 'vertical',
+                min: 1948,
+                max: 2018,
+                step: 1,
+                slide: function (event, ui) {
+                    year = ui.value;
+                    updateCoups();
+                    updateCountries();
+                    updateSliderTxt();
+                }
+            });
+            $("#slider").addClass("vertical");
+        }
+
+        if($(window).width() >= 767) {
+            $("#slider").slider({
+                value: 1948,
+                min: 1948,
+                max: 2018,
+                step: 1,
+                slide: function (event, ui) {
+                    year = ui.value;
+                    updateCoups();
+                    updateCountries();
+                    updateSliderTxt();
+                }
+            });
+            $("#slider").removeClass("vertical");
+        }
+    });
 });
+
+
+
+

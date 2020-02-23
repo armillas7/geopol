@@ -7,6 +7,7 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #map {
@@ -17,21 +18,54 @@ body {
     height: 100%
 }
 
+.web-title {
+    position: fixed;
+    right: 30;
+    top: 20;
+    font-size: 16px;
+    background-color: #5f5f5f9e;
+    padding: 6px 8px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.web-title span {
+    display: block;
+}
+
 /* Estils de l'slider */
 #slider {
-    left: 30;
+    position: fixed;
+    left: 180;
     top: 30;
-    width: 70%;
+    width: 78%;
     margin: 0 auto;
     background-color: #2f2f2f;
     border: none;
     height: 10px;
 }
 
+#slider.vertical {
+    position: fixed;
+    left: 20;
+    top: 40;
+    height: 85%;
+    width: 10px;
+    margin: 0 auto;
+    background-color: #2f2f2f;
+    border: none;
+}
+
 .info-year {
     position: relative;
     left: -80;
     top: -4;
+}
+
+#slider.vertical .info-year {
+    position: relative;
+    left: 0;
+    top: -30;
 }
 
 .info-year-txt {
@@ -43,6 +77,7 @@ body {
 }
 
 .ui-slider-handle {
+    top: -4;
     border-radius: 14px;
     background: #3386c0!important;
     border:none!important;
@@ -55,13 +90,13 @@ body {
 }
 
 .mapboxgl-popup-content {
-    background-color: #2f2f2f;
+    background-color: #2f2f2fd9;
     border-radius: 6px;
     width: 270px;
 }
 
 .mapboxgl-popup-tip {
-    border-top-color: #2f2f2f!important;
+    border-top-color: #2f2f2fd9!important;
 }
 
 .popup .popup-icon {
@@ -93,7 +128,7 @@ body {
     font-size: 16px;
     text-transform: capitalize;
     font-weight: bold;
-    color: #a0a0a0;
+    color: #c6c6c6;
 }
 
 .popup .title {
@@ -104,9 +139,9 @@ body {
     margin-top: 6px;
     margin-left: 8px;
     padding: 4px 7px;
-    background-color: #1c1c1c;
+    background-color: #1c1c1ca6;
     border-radius: 6px;
-    color: #a0a0a0;
+    color: #c6c6c6;
 }
 
 .popup .details .detail {
@@ -116,7 +151,8 @@ body {
 
 .detail .participants {
     display: block;
-    margin-top: -5px;
+    margin-top: -2px;
+    line-height: 115%;
 }
 
 /* Estils del dropdown */
@@ -134,23 +170,32 @@ body {
     width: 160px;
 }
 
+.drop-btn img {
+    background-color: #6666669e;
+}
+
+.drop-btn img:hover {
+    background-color: #3386c08f;
+}
+
 .democracy-info, .coups-info {
-    background-color: white;
+    background-color: #2f2f2f;
     padding: 8px;
     border-radius: 10px;
-    margin-top: 10px;
-    border: 3px solid #2f2f2f;
+    margin-top: 18px;
+    color: #c6c6c6;
 }
 
 .democracy-info a, .coups-info a {
     display: block;
     margin-top: 5px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
+    color: #8c8c8c;
 }
 
 .democracy-info a:hover, .coups-info a:hover {
-    color: gray;
+    color: #c6c6c6;
 }
 
 .democracy-info .legend, .coups-info .legend {
@@ -175,24 +220,24 @@ body {
 }
 
 .democracy-info .dot.lower {
-    background-color: #FF101066;
+    background-color: #FF101088;
 }
 
 .democracy-info .dot.medium {
-    background-color: #E0860366;
+    background-color: #E0860388;
 }
 
 .democracy-info .dot.higher {
-    background-color: #02492766;
+    background-color: #024927F7;
 }
 
 .democracy-info .det, .coups-info .det {
     margin-top: 4px;
 }
 
-.democracy-info .det .txt {
+.democracy-info .det .txt, .coups-info .det .txt {
     display: inline-block;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .democracy-info .det .txt.medium {
@@ -208,9 +253,13 @@ body {
     width: 36px;
 }
 
+.coups-info .dot-container.last {
+    margin-bottom: -3px;
+}
+
 .coups-info .dot {
     display: block;
-    background-color: #2f2f2f;
+    background-color: #8f8f8f;
     border-radius: 50%;
     margin: auto;
 }
@@ -233,4 +282,79 @@ body {
 .coups-info .dot.bigger {
     height: 18px;
     width: 18px;
+}
+
+/* Media queries */
+@media (max-width: 1750px) {
+    #slider {
+        width: 82%;
+        left: 90;
+    }
+
+    .drop-info {
+        top: 50px;
+        left:15px;
+    }
+}
+
+
+@media (max-width: 1650px) {
+    #slider {
+        width: 81%;
+        left: 90;
+    }
+}
+
+@media (max-width: 1550px) {
+    #slider {
+        width: 79%;
+        left: 90;
+    }
+}
+
+@media (max-width: 1450px) {
+    #slider {
+        width: 78%;
+        left: 90;
+    }
+}
+
+@media (max-width: 1280px) {
+    .web-title {
+        top: 50px;
+        right:15px;
+    }
+
+    .drop-info {
+        top: 50px;
+        left:15px;
+    }
+
+    #slider {
+        width: 90%;
+        left: 90;
+    }
+}
+
+@media (max-width: 1000px) {
+    #slider {
+        width: 88%;
+    }
+}
+
+@media (max-width: 767px) {
+    .web-title {
+        right: 10;
+        top: 10;
+        font-size: 13px;
+        padding: 3px 5px;
+    }
+
+    .drop-info {
+        display: none;
+    }
+
+    .ui-slider-handle {
+        top: 0;
+    }
 }
