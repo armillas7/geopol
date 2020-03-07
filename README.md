@@ -1,7 +1,7 @@
 # geopol
 Qualitat democràtica i Cops d'Estat.
 
-Visor web realitzat amb Mapbox on es mostra l’evolució a escala mundial de les anomenades “democràcies” i relació causa-efecte amb els “Cops d'Estat” que s’han produït des de l’any 1948.
+Visor web realitzat amb Mapbox on es mostra l’evolució a escala mundial de les anomenades “democràcies” i la relació causa-efecte amb els “Cops d'Estat” que s’han produït des de l’any 1948.
 <br/>
 <br/>
 <a href="https://armillas7.github.io/geopol/" target="_blank">Visor web</a>
